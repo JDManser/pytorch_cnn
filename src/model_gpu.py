@@ -15,12 +15,13 @@ import torch.nn.functional as F
 import torch.optim as optim
 import NeuralNet
 import matplotlib.pyplot as plt
+import DatasetLoader as dl
 
 ### Define a convulutional neural network class
     
 def main():
 
-    MODEL_PATH = './model_pytorch/output/'
+    MODEL_PATH = './output/'
 
     # Set hyper-parameters
     batch_size = 4
@@ -37,10 +38,10 @@ def main():
     testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=2)
 
     # Define image classes
-    classes = ('plane', 'car', 'bird', 'cat','deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+    classes = ('mosaic', 'smut', 'none')
     
     train_model(trainloader, num_epochs, learning_rate, MODEL_PATH)
-    test_model(testloader, classes, MODEL_PATH)
+    #test_model(testloader, classes, MODEL_PATH)
 
 def imshow(img):
     img = img / 2 + 0.5     # unnormalize
